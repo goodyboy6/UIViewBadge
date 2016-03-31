@@ -3,7 +3,7 @@ In many situatio, we need add a "red point" or "number with red background color
 UIViewBadge is to solve this problem. It's an UIView extension in Swift, if you can find a UIView, you can easily add a badge to it. UIViewBadge only supported on iOS > 8 because Swift only support uses dynamic frameworks. As a result,  if you want to support iOS < 8, download the code and copy the file to your project.<br>
 
 Example thunmbnail:
-![image]()
+![image](https://github.com/goodyboy6/UIViewBadge/blob/master/ScreenShot.png)
 
 ## Install
 pod 'UIViewBadge'
