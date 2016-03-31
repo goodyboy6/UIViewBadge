@@ -29,6 +29,22 @@
     [_aView setBadgeHidden:NO];
     [_aView setNumberBadge:9000];
     [_aView setBadgeBackgroundColor:[UIColor purpleColor]];
+    
+    self.tabBarItem.badgeValue = @"2";
+    
+    UINavigationItem *navigationItem = self.tabBarController.navigationItem;
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[self buildACustomButton]];
+    [navigationItem.rightBarButtonItem.customView setBadgeHidden:NO];
+    [navigationItem.rightBarButtonItem.customView setPointBadge:CGSizeMake(10, 10)];
+    [navigationItem.rightBarButtonItem.customView setBadgeBackgroundColor:[UIColor purpleColor]];
+}
+
+- (UIButton *)buildACustomButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    button.frame = CGRectMake(0, 0, 24, 24);
+    button.backgroundColor = [UIColor blueColor];
+    return button;
 }
 
 @end

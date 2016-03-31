@@ -509,6 +509,7 @@
 				31E568CA1CAC02560024E9DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31E568CB1CAC02560024E9DC /* Build configuration list for PBXNativeTarget "UIViewBadgeTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +518,7 @@
 				31E568CD1CAC02560024E9DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31E568CE1CAC02560024E9DC /* Build configuration list for PBXNativeTarget "UIViewBadgeUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +527,7 @@
 				31E568D01CAC02560024E9DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
