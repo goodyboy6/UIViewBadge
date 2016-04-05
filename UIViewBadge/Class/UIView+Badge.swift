@@ -114,15 +114,11 @@ public extension UIView{
     }
     
     @objc public func setPointBadge(size:CGSize){
-        var f:CGRect = self.badgeLabel.frame; f.size = size;
-        self.badgeLabel.frame = f
-        self.badgeLabel.text = ""
-        self.badgeLabel.layer.cornerRadius = self.badgeLabel.intrinsicContentSize().height/2
+        self.setBadgeStyle(BadgeStyle.Point(size))
     }
     
     @objc public func setNumberBadge(number:UInt){
-        self.badgeLabel.text = "\(number)";
-        self.badgeLabel.layer.cornerRadius = self.badgeLabel.intrinsicContentSize().height/2
+        self.setBadgeStyle(BadgeStyle.Number(number))
     }
     
     @nonobjc public func setBadgeStyle(style:BadgeStyle){
