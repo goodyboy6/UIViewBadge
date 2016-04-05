@@ -2,15 +2,14 @@
 In many situatio, we need add a "red point" or "number with red background color" as a badge in an icon, to tell user---hey, there's something new here.... <br>
 UIViewBadge is to solve this problem. It's an UIView extension in Swift, if you can find a UIView, you can easily add a badge to it. UIViewBadge only supported on iOS > 8 because Swift only support uses dynamic frameworks. As a result,  if you want to support iOS < 8, download the code and copy the file to your project.<br>
 
-Example thunmbnail:
-![image]()
+Example thunmbnail:<br>
+![image](https://github.com/goodyboy6/UIViewBadge/blob/master/ScreenShot.png)
 
 ## Install
 pod 'UIViewBadge'
 
 ## Usage In Swift
-<pre>
-<code>
+```swift
         //red point/number in UIButton
         aButton.setBadgeHidden(false)
         aButton.setBadgeStyle(BadgeStyle.Point(CGSizeMake(10, 10)))
@@ -43,11 +42,9 @@ pod 'UIViewBadge'
         item.customView?.setBadgeHidden(false)
         item.customView?.setBadgeStyle(BadgeStyle.Point(CGSizeMake(10, 10)))
         item.customView?.setBadgeBackgroundColor(UIColor.purpleColor())
-</code>
-</pre>
+```
 ## Usage In Objective-C
-<pre>
-<code>
+```objective-c
     [_aButton setBadgeHidden:NO];
     [_aButton setPointBadge:CGSizeMake(10, 10)];
     [_aButton setBadgeBackgroundColor:[UIColor purpleColor]];
@@ -61,8 +58,7 @@ pod 'UIViewBadge'
     [navigationItem.rightBarButtonItem.customView setBadgeHidden:NO];
     [navigationItem.rightBarButtonItem.customView setPointBadge:CGSizeMake(10, 10)];
     [navigationItem.rightBarButtonItem.customView setBadgeBackgroundColor:[UIColor purpleColor]];
-</code>
-</pre>
+```
 
 ##Example Project
 An example project is provided. It requires IOS7 and can be run on device or simulator. This will work for any device size. 
