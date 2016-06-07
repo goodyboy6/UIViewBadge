@@ -9,7 +9,7 @@ Example thunmbnail:<br>
 pod 'UIViewBadge'
 
 ## Usage In Swift
-```swift
+```swift````
         //red point/number in UIButton
         aButton.setBadgeHidden(false)
         aButton.setBadgeStyle(BadgeStyle.Point(CGSizeMake(10, 10)))
