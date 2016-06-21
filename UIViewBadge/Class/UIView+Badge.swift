@@ -23,7 +23,7 @@ private class PaddingLabel: UILabel {
             return self.frame.size;
         }
         
-        var size = NSString(UTF8String:text)!.sizeWithAttributes([NSFontAttributeName: self.font])
+        var size = NSString(utf8String:text)!.size(attributes:[NSFontAttributeName: self.font])
         size.width += kBadgeSidePaddingX*2
         size.height += kBadgeSidePaddingY*2
         size.width = size.width > size.height ? size.width : size.height
@@ -38,14 +38,14 @@ public extension UITabBar{
         guard self.items != nil else{ return nil}
         guard index < self.items!.count else{ return nil  }
         
-        let barItemWidth = CGRectGetWidth(self.frame)/CGFloat(self.items!.count)
-        let barItemHeight = CGRectGetHeight(self.frame)
+        let barItemWidth = self.frame.width/CGFloat(self.items!.count)
+        let barItemHeight = self.frame.height
         
-        let viewFrame = CGRectMake(CGFloat(index)*barItemWidth, 0, barItemWidth, barItemHeight)
+        let viewFrame = CGRect(origin: CGPoint(x: CGFloat(index)*barItemWidth, y:0), size: CGSize(width: barItemWidth, height:barItemHeight));
         
         var itemView:UIView?
         for view in self.subviews{
-            if CGRectContainsRect(viewFrame, view.frame) {
+            if viewFrame.contains(view.frame) {
                 itemView = view;
                 break;
             }
@@ -53,13 +53,13 @@ public extension UITabBar{
         
         if itemView == nil { return nil }
         
-        return self.imageViewIn(itemView!)
+        return self.imageViewIn(view: itemView!)
     }
     
     private func imageViewIn(view:UIView) -> UIImageView? {
         for v in view.subviews{
             guard let imageView = v as? UIImageView else{
-                return self.imageViewIn(v)
+                return self.imageViewIn(view: v)
             }
             return imageView
         }
@@ -71,12 +71,12 @@ public extension UIView{
     private var badgeLabel:UILabel{
         get{
             guard let lastLabel = self.viewWithTag(kBadgeLabelTag) as? UILabel else {
-                let label = PaddingLabel.init(frame: CGRectMake(0, 0, 2, 2))
+                let label = PaddingLabel.init(frame: CGRect(origin: CGPoint(x: 0, y:0), size: CGSize(width: 2, height: 2)));//CGRectMake(0, 0, 2, 2))
                 label.tag = kBadgeLabelTag
-                label.textAlignment = NSTextAlignment.Center;
+                label.textAlignment = NSTextAlignment.center
                 label.layer.masksToBounds = true
-                label.backgroundColor = UIColor.redColor()
-                label.textColor = UIColor.whiteColor()
+                label.backgroundColor = UIColor.red()
+                label.textColor = UIColor.white()
                 return label
             }
             return lastLabel;
@@ -89,14 +89,14 @@ public extension UIView{
             self.addSubview(self.badgeLabel)
             
             self.badgeLabel.translatesAutoresizingMaskIntoConstraints = false
-            self.addConstraint(NSLayoutConstraint.init(item: self.badgeLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
-            self.addConstraint(NSLayoutConstraint.init(item: self.badgeLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: -3))
+            self.addConstraint(NSLayoutConstraint.init(item: self.badgeLabel, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0))
+            self.addConstraint(NSLayoutConstraint.init(item: self.badgeLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1, constant: -3))
             
-            self.badgeLabel.hidden = hidden
+            self.badgeLabel.isHidden = hidden
             return
         }
         
-        view.hidden = hidden
+        view.isHidden = hidden
     }
     
     ///default is redColor()
@@ -114,11 +114,11 @@ public extension UIView{
     }
     
     @objc public func setPointBadge(size:CGSize){
-        self.setBadgeStyle(BadgeStyle.Point(size))
+        self.setBadgeStyle(style: BadgeStyle.Point(size))
     }
     
     @objc public func setNumberBadge(number:UInt){
-        self.setBadgeStyle(BadgeStyle.Number(number))
+        self.setBadgeStyle(style: BadgeStyle.Number(number))
     }
     
     @nonobjc public func setBadgeStyle(style:BadgeStyle){
